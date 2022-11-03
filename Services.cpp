@@ -107,15 +107,15 @@ class Services
 		return (firstString==secondString or firstString=="" or secondString=="");
 	}
 	
-	bool isTheContactMatching(Contact contact,Contact prefixContact)
+	bool isTheContactMatching(Contact contact,Contact ContactToCheck)
 	{
 		string firstName=contact.getfirstName();
 		string lastName=contact.getlastName();
 		string contactNumber=contact.getcontactNumber();
 		
-		string firstNamePrefix=prefixContact.getfirstName();
-		string lastNamePrefix=prefixContact.getlastName();
-		string contactNumberPrefix=prefixContact.getcontactNumber();
+		string firstNamePrefix=ContactToCheck.getfirstName();
+		string lastNamePrefix=ContactToCheck.getlastName();
+		string contactNumberPrefix=ContactToCheck.getcontactNumber();
 
 		return (areEqual(firstName,firstNamePrefix) and areEqual(lastName,lastNamePrefix) and areEqual(contactNumber,contactNumberPrefix));
 	}
