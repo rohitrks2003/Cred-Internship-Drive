@@ -14,19 +14,15 @@ class Services
 	{
 		for(auto x:contactNumber)
 		{
-			if(x>='0' and x<='9')
+			if(!(x>='0' and x<='9')) 
 			{
-				// this is a valid character for a phone number
-			}
-			else 
-			{
-				cout<<"ERROR: Contact number can only have digits\n";
+				//cout<<"ERROR: Contact number can only have digits\n";
 				return false;
 			}
 		}
 		if(contactNumber.length()!=10)
 		{
-			cout<<"ERROR: Contact number should be of length 10\n";
+			//cout<<"ERROR: Contact number should be of length 10\n";
 			return false;
 		}
 		return true;
@@ -37,17 +33,9 @@ class Services
 	{
 		for(char character:Name)
 		{
-			if(character>='A' and character<='Z')
+			if(!((character>='A' and character<='Z') or (character>='a' and character<='z')))
 			{
-				
-			}
-			else if(character>='a' and character<='z')
-			{
-				
-			}
-			else 
-			{
-				cout<<"ERROR: The Name should only contain Alphabets\n";
+				//cout<<"ERROR: The Name should only contain Alphabets\n";
 				return false;
 			}
 		}
@@ -100,6 +88,25 @@ class Services
 	
 	// This function helps in checking if a contact is prefix of other contact 
 	// and matches the search pattern
+	bool isTheContactMatchingPrefix(Contact contact,Contact prefixContact)
+	{
+		string firstName=contact.getfirstName();
+		string lastName=contact.getlastName();
+		string contactNumber=contact.getcontactNumber();
+		
+		string firstNamePrefix=prefixContact.getfirstName();
+		string lastNamePrefix=prefixContact.getlastName();
+		string contactNumberPrefix=prefixContact.getcontactNumber();
+
+		return (checkIfTheStringsHaveSamePrefix(firstNamePrefix,firstName) and checkIfTheStringsHaveSamePrefix(lastNamePrefix,lastName)
+		and checkIfTheStringsHaveSamePrefix(contactNumberPrefix,contactNumber));
+	}
+	
+	bool areEqual(string firstString,string secondString)
+	{
+		return (firstString==secondString or firstString=="" or secondString=="");
+	}
+	
 	bool isTheContactMatching(Contact contact,Contact prefixContact)
 	{
 		string firstName=contact.getfirstName();
@@ -110,14 +117,6 @@ class Services
 		string lastNamePrefix=prefixContact.getlastName();
 		string contactNumberPrefix=prefixContact.getcontactNumber();
 
-		if(checkIfTheStringsHaveSamePrefix(firstNamePrefix,firstName) and checkIfTheStringsHaveSamePrefix(lastNamePrefix,lastName)
-		and checkIfTheStringsHaveSamePrefix(contactNumberPrefix,contactNumber))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return (areEqual(firstName,firstNamePrefix) and areEqual(lastName,lastNamePrefix) and areEqual(contactNumber,contactNumberPrefix));
 	}
 };
