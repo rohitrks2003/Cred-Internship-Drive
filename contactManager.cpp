@@ -36,11 +36,7 @@ class contactManager:public Services
 	// this function is used to add a new contact in contact list
 	void addContact(string firstName,string lastName,string contactNumber)
 	{
-		if(!checkValidContactNumber(contactNumber) or !checkValidName(firstName) or !checkValidName(lastName))
-		{
-			return;
-		}
-		if(firstName.length()==0)
+		if(!checkValidContactNumber(contactNumber) or !checkValidName(firstName) or !checkValidName(lastName) or firstName.length()==0)
 		{
 			return;
 		}
@@ -64,7 +60,7 @@ class contactManager:public Services
 			node=node->children[indexOfCurrentCharacter];
 		}
 		node->containsWord.push_back(person);
-		cout<<"INFO: Contact Successfully Added\n";
+		//cout<<"INFO: Contact Successfully Added\n";
 	}
 	
 	// This is a helper function that will help in the searching process
@@ -72,7 +68,7 @@ class contactManager:public Services
 	{
 		for(auto contactDetails:node->containsWord)
 		{
-			if(isTheContactMatching(contactDetails,prefixContact))
+			if(isTheContactMatchingPrefix(contactDetails,prefixContact))
 			{
 				result.push_back(contactDetails);
 			}
@@ -89,7 +85,7 @@ class contactManager:public Services
 	
 	// first we will locate the first name up to prefix 
 	// and then we will find all the name under that subtree
-	vector<Contact> searchContact(string firstNamePrefix,string lastNamePrefix,string contactNumberPrefix)
+	vector<Contact> searchContactByPrefix(string firstNamePrefix,string lastNamePrefix,string contactNumberPrefix)
 	{
 		result.clear();
 		Trie* node=root;
@@ -113,6 +109,36 @@ class contactManager:public Services
 		
 		Contact prefixContact=Contact(firstNamePrefix,lastNamePrefix,contactNumberPrefix);
 		searchInSubtree(node,prefixContact);
+		return result;
+	}
+	
+	vector<Contact> searchContactByExactName(string firstNamePrefix,string lastNamePrefix,string contactNumberPrefix)
+	{
+		result.clear();
+		Trie* node=root;
+		int firstNamePrefixLength=firstNamePrefix.length();
+		for(int i=0;i<firstNamePrefixLength;i++)
+		{
+			char currentCharacter=firstNamePrefix[i];
+			currentCharacter=convertToLowerCase(currentCharacter);
+			int indexOfCurrentCharacter=currentCharacter-'a';
+			
+			
+			if(node->children[indexOfCurrentCharacter]==NULL)
+			{
+				return result;
+			}
+			node=node->children[indexOfCurrentCharacter];
+		}
+		
+		Contact prefixContact=Contact(firstNamePrefix,lastNamePrefix,contactNumberPrefix);
+		for(auto contactDetails:node->containsWord)
+		{
+			if(isTheContactMatching(contactDetails,prefixContact))
+			{
+				result.push_back(contactDetails);
+			}
+		}
 		return result;
 	}
 };
