@@ -2,6 +2,8 @@
 #include "Services.cpp"
 using namespace std;
 
+
+// Struct to support Trie datatype
 struct Trie
 {
 	vector<Contact> containsWord;
@@ -62,9 +64,10 @@ class contactManager:public Services
 			node=node->children[indexOfCurrentCharacter];
 		}
 		node->containsWord.push_back(person);
+		cout<<"Contact Successfully Added\n";
 	}
 	
-	
+	// This is a helper function that will help in the searching process
 	void searchInSubtree(Trie* node,Contact prefixContact)
 	{
 		for(auto contactDetails:node->containsWord)
