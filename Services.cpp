@@ -2,9 +2,12 @@
 #include "contact.cpp"
 using namespace std;
 
+
+// This class provides Services used at various places in code
 class Services
 {
 	public:
+	
 	
 	bool checkValidContactNumber(string contactNumber)
 	{
@@ -16,11 +19,13 @@ class Services
 			}
 			else 
 			{
+				cout<<"ERROR: Contact number can only have digits\n";
 				return false;
 			}
 		}
 		if(contactNumber.length()!=10)
 		{
+			cout<<"ERROR: Contact number should be of length 10\n";
 			return false;
 		}
 		return true;
@@ -41,6 +46,7 @@ class Services
 			}
 			else 
 			{
+				cout<<"ERROR: The Name should only contain Alphabets\n";
 				return false;
 			}
 		}
