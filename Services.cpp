@@ -113,10 +113,10 @@ class Services
 		string lastName=contact.getlastName();
 		string contactNumber=contact.getcontactNumber();
 		
-		string firstNamePrefix=ContactToCheck.getfirstName();
-		string lastNamePrefix=ContactToCheck.getlastName();
-		string contactNumberPrefix=ContactToCheck.getcontactNumber();
+		string firstNameToCheck=ContactToCheck.getfirstName();
+		string lastNameToCheck=ContactToCheck.getlastName();
+		string contactNumberToCheck=ContactToCheck.getcontactNumber();
 
-		return (areEqual(firstName,firstNamePrefix) and areEqual(lastName,lastNamePrefix) and areEqual(contactNumber,contactNumberPrefix));
+		return (areEqual(firstName,firstNameToCheck) and areEqual(lastName,lastNameToCheck) and areEqual(contactNumber,contactNumberToCheck));
 	}
 };
