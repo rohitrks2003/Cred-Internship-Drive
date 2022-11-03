@@ -19,7 +19,7 @@ struct Trie
 	}
 };
 
-// Inhertince
+// Inheritence
 
 class contactManager:public Services
 {
