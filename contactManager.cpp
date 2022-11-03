@@ -64,7 +64,7 @@ class contactManager:public Services
 			node=node->children[indexOfCurrentCharacter];
 		}
 		node->containsWord.push_back(person);
-		cout<<"Contact Successfully Added\n";
+		cout<<"INFO: Contact Successfully Added\n";
 	}
 	
 	// This is a helper function that will help in the searching process
