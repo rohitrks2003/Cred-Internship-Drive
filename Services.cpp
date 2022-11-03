@@ -8,7 +8,8 @@ class Services
 {
 	public:
 	
-	
+	// This function helps in checking the validity of the phone number
+	// In case of any error , the function prints it on the screen
 	bool checkValidContactNumber(string contactNumber)
 	{
 		for(auto x:contactNumber)
@@ -63,6 +64,7 @@ class Services
 		return character;
 	}
 	
+	// This function is used to check whether 2 characters are same irrespective of the case
 	bool CheckIfCharactersAreSameInCaseInsensitive(char firstCharacter,char secondCharacter)
 	{
 		// convert both the characters in lowercase
@@ -71,6 +73,7 @@ class Services
 		return firstCharacter==secondCharacter;
 	}
 	
+	// This function is used to check if a string is prefix of other
 	bool checkIfTheStringsHaveSamePrefix(string firstString,string secondString)
 	{
 		if(firstString.length()==0 or secondString.length()==0)
@@ -95,6 +98,8 @@ class Services
 		return stringsHaveSamePrefix;
 	}
 	
+	// This function helps in checking if a contact is prefix of other contact 
+	// and matches the search pattern
 	bool isTheContactMatching(Contact contact,Contact prefixContact)
 	{
 		string firstName=contact.getfirstName();
