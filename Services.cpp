@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include "contact.cpp"
+#include "Contact.cpp"
 using namespace std;
 
 
@@ -42,6 +42,7 @@ class Services
 		return true;
 	}
 	
+	
 	// this function is used to convert a uppercase character in lowercase
 	char convertToLowerCase(char character)
 	{
@@ -51,6 +52,17 @@ class Services
 		}
 		return character;
 	}
+	
+	int findIndexOfCharacterUsingCharacter(char character)
+	{
+		character=convertToLowerCase(character);
+		if(character>='a' and character<='z')
+		{
+			return character-'a';
+		}
+		return character-'0';
+	}
+	
 	
 	// This function is used to check whether 2 characters are same irrespective of the case
 	bool CheckIfCharactersAreSameInCaseInsensitive(char firstCharacter,char secondCharacter)
