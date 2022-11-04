@@ -47,10 +47,8 @@ signed main()
 	obj.addContact("Himanshu","Yadav","3833833832");
 	obj.addContact("Jekla","Grish","2312312319");
 	obj.addContact("Kemal","Deep","9887987987");
-	
-	
-	
-	vector<Contact> contacts=obj.searchContact("","P","2");
+	obj.addContact("A","Deep","9887987987");
+	vector<Contact> contacts=obj.searchContactByPrefix("","Sharm","");
 	for(auto contact:contacts)
 	{
 		cout<<contact.getfirstName()<<" "<<contact.getlastName()<<" "<<contact.getcontactNumber()<<"\n";
